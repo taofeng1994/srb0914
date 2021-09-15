@@ -31,6 +31,19 @@ public class User implements Serializable {
     private Integer deleted;
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", deleted=" + deleted +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
