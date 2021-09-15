@@ -114,8 +114,27 @@ public class TestMapper {
     }
 
 
+    /**
+     * 逻辑删除 @tableLogic
+     */
+
+    @Test
+    public void test08() {
+        int i = userMapper.deleteById(20);
+        System.out.println(i);
+
+    }
+
+    /**
+     * 测试逻辑删除
+     */
+    @Test
+    public void test(){
+        Integer integer = userMapper.selectCount(null);
+        System.out.println(integer);
 
 
+    }
 
 
 

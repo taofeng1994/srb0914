@@ -10,6 +10,11 @@
     </select>
 
 
+    <select id="selectPageByPage" resultType="user">
+
+        select * from user where age >#{age}
+    </select>
+
 
 
 </mapper>

@@ -3,12 +3,11 @@ package com.atguigu.mybatis.entity;
 
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+import sun.awt.SunHints;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 
 @TableName(value = "user")
@@ -22,15 +21,15 @@ public class User implements Serializable {
     @TableField(value = "email")
     private String email;
 
-    public User() {
-    }
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
+    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 
-    public User(Long id, String name, Integer age, String email) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.email = email;
-    }
+    @TableLogic
+    @TableField (value = "is_deleted")
+    private Integer deleted;
+
 
     public Long getId() {
         return id;
@@ -62,5 +61,29 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 }
