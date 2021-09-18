@@ -17,7 +17,7 @@
       <module name="haha" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
       <module name="service-base" target="1.8" />
-      <module name="stb0914" target="1.8" />
+      <module name="srb0914" target="1.8" />
       <module name="untitled" target="1.8" />
     </bytecodeTargetLevel>
   </component>

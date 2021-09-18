@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -126,6 +127,40 @@ public class TestWapper {
 
 
     }
+
+    /**
+     * 测试动态失去了语句：查询名字中包含n，年龄大于10且小于20的用户
+     */
+    @Test
+    public void test07() {
+        String name = "n";
+        Integer ageBegin = 10;
+        Integer ageEnd = 20;
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        /*if (name != null && !name.equals("")) {
+            queryWrapper.like("name",name);
+        }
+        if (ageBegin != null && ageBegin > 0) {
+            queryWrapper.ge("age",ageBegin);
+        }if (ageEnd !=null && ageEnd>0){
+
+            queryWrapper.le("age",ageEnd);
+
+        }
+        List<User> list = userMapper.selectList(queryWrapper);
+        for (User user : list) {
+            System.out.println(user);
+        }*/
+        queryWrapper.like(name != null && !name.equals(""), "naem", name)
+                .ge(ageBegin != null && ageBegin > 0, "age", ageBegin)
+                .le(ageEnd != null && ageEnd > 0, "age", ageEnd);
+        List<User> list = userMapper.selectList(queryWrapper);
+        for (User user : list) {
+            System.out.println(user);       }
+    }
+
+
+
 
 
 

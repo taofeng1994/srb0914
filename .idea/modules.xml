@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/guigu-common/guigu-common.iml" filepath="$PROJECT_DIR$/guigu-common/guigu-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" filepath="$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-base/service-base.iml" filepath="$PROJECT_DIR$/service-base/service-base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/stb0914.iml" filepath="$PROJECT_DIR$/.idea/stb0914.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/srb0914.iml" filepath="$PROJECT_DIR$/.idea/srb0914.iml" />
     </modules>
   </component>
 </project>
