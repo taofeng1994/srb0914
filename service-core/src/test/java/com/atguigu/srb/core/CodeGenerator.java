@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class CodeGenerator {
@@ -32,7 +34,7 @@ public class CodeGenerator {
         globalConfig.setOutputDir(projectPath + "/src/main/java");
 
         globalConfig.setOpen(false); //生成后是否打开资源管理器
-        globalConfig.setServiceName("%sService");	//去掉Service接口的首字母I
+        globalConfig.setServiceName("%sService");    //去掉Service接口的首字母I
         globalConfig.setIdType(IdType.AUTO); //主键策略
         globalConfig.setSwagger2(true);//开启Swagger2模式
 
@@ -69,7 +71,11 @@ public class CodeGenerator {
         autoGenerator.execute();
 
 
+        Integer integer = new Integer(18);
+
+
     }
+
 
 
 }

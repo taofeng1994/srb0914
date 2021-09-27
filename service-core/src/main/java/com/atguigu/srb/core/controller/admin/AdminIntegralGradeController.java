@@ -1,7 +1,9 @@
 package com.atguigu.srb.core.controller.admin;
 
 
+import com.atguigu.srb.common.exception.Assert;
 import com.atguigu.srb.common.result.R;
+import com.atguigu.srb.common.result.ResponseEnum;
 import com.atguigu.srb.core.pojo.entity.IntegralGrade;
 import com.atguigu.srb.core.service.IntegralGradeService;
 import io.swagger.annotations.Api;
@@ -10,11 +12,13 @@ import org.apache.commons.lang3.builder.ToStringExclude;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 @RequestMapping("/admin/core/integralGrade")
 @Api(tags = "积分等级管理")
+@CrossOrigin
 public class AdminIntegralGradeController {
 
     @Resource
@@ -28,7 +32,7 @@ public class AdminIntegralGradeController {
     @ApiOperation("查看所有积分列表")
     public R list() {
         List<IntegralGrade> list = integralGradeService.list();
-        return R.ok().data("list",list);
+        return R.ok().data("list",list).message("获取列表成功");
     }
 
     /**
@@ -49,7 +53,7 @@ public class AdminIntegralGradeController {
      * @return
      */
 
-    @GetMapping("/get{id}")
+    @GetMapping("/get/{id}")
     @ApiOperation("根据id查询积分等级")
     public R getById(@PathVariable Long id){
         IntegralGrade integralGrade = integralGradeService.getById(id);
@@ -65,8 +69,9 @@ public class AdminIntegralGradeController {
     @PutMapping("/update")
     @ApiOperation("根据id更新积分等级")
     public R updateById(@RequestBody IntegralGrade integralGrade){
+        BigDecimal borrowAmount = integralGrade.getBorrowAmount();
+        Assert.notNull(borrowAmount,ResponseEnum.BORROW_AMOUNT_NULL_ERROR);
         boolean b = integralGradeService.updateById(integralGrade);
-        int a = 10/0;
         return R.ok().message("更新成功");
 
     }
@@ -80,12 +85,14 @@ public class AdminIntegralGradeController {
     @PostMapping("/save")
     @ApiOperation("新增积分等级")
     public R save(@RequestBody IntegralGrade integralGrade){
+        BigDecimal borrowAmount = integralGrade.getBorrowAmount();
+        Assert.notNull(borrowAmount,ResponseEnum.BORROW_AMOUNT_NULL_ERROR);
+
         boolean b = integralGradeService.save(integralGrade);
         return R.ok().message("新增成功");
 
 
     }
-
 
 
 

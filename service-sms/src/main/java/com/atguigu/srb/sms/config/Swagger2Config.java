@@ -1,8 +1,7 @@
-package com.atguigu.srb.base.config;
+package com.atguigu.srb.sms.config;
 
 
 import com.google.common.base.Predicates;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -20,11 +19,11 @@ public class Swagger2Config {
     @Bean
     public Docket adminApiConfig() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("adminApi")
+                .groupName("smsApi")
                 .apiInfo(adminApiInfo())
                 .select()
                 //只显示admin路径下的页面
-                .paths(Predicates.and(PathSelectors.regex("/admin/.*")))
+                .paths(Predicates.and(PathSelectors.regex("/api/.*")))
                 .build();
 
     }
@@ -32,10 +31,10 @@ public class Swagger2Config {
     private ApiInfo adminApiInfo(){
 
         return new ApiInfoBuilder()
-                .title("尚融宝后台管理系统-API文档")
-                .description("本文档描述了尚融宝后台管理系统接口")
+                .title("尚融宝管理系统")
+                .description("本文档描述了尚融宝后台短信管理系统接口")
                 .version("1.0")
-                .contact(new Contact("Helen", "http://atguigu.com", "55317332@qq.com"))
+                .contact(new Contact("taofeng", "http://atguigu.com", "765060305@qq.com"))
                 .build();
     }
 }

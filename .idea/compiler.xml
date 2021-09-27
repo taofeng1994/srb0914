@@ -2,23 +2,29 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
+      <profile default="true" name="Default" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+      </profile>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-core" />
         <module name="service-base" />
+        <module name="service-sms" />
         <module name="mybatis-plus" />
         <module name="guigu-common" />
+        <module name="alibaba-easyexcel" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="alibaba-easyexcel" target="1.8" />
       <module name="guigu-common" target="1.8" />
       <module name="haha" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
       <module name="service-base" target="1.8" />
       <module name="service-core" target="1.8" />
+      <module name="service-sms" target="1.8" />
       <module name="srb0914" target="1.8" />
       <module name="untitled" target="1.8" />
     </bytecodeTargetLevel>
@@ -29,6 +35,7 @@
       <module name="mybatis-plus" options="-parameters" />
       <module name="service-base" options="-parameters" />
       <module name="service-core" options="-parameters" />
+      <module name="service-sms" options="-parameters" />
     </option>
   </component>
 </project>
