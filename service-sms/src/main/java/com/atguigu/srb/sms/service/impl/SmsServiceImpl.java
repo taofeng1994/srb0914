@@ -67,7 +67,7 @@ public class SmsServiceImpl implements SmsService {
         Assert.isTrue(b,ResponseEnum.ALIYUN_SMS_ERROR);
 
         //将验证码存入redis缓存
-        redisTemplate.opsForValue().set("srb:sms:code" + mobile,code,3, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set("srb:sms:code" + mobile,code,120, TimeUnit.HOURS);
 
 
 

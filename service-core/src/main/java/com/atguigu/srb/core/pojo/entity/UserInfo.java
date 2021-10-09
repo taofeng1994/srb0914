@@ -26,6 +26,9 @@ public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public static final Integer STATUS_NORMAL = 1;
+    public static final Integer STATUS_LOCKED = 0;
+
     @ApiModelProperty(value = "编号")
       @TableId(value = "id", type = IdType.AUTO)
     private Long id;

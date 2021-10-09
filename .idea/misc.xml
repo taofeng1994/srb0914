@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis-plus/pom.xml" />
         <option value="$PROJECT_DIR$/alibaba-easyexcel/pom.xml" />
+        <option value="$PROJECT_DIR$/jwt/pom.xml" />
       </list>
     </option>
   </component>

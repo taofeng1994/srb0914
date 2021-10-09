@@ -13,6 +13,7 @@
         <module>mybatis-plus</module>
         <module>service-core</module>
         <module>service-sms</module>
+        <module>service-oss</module>
     </modules>
     <packaging>pom</packaging>
 
