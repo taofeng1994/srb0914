@@ -17,7 +17,6 @@ import java.util.Map;
 
 @RestController
 @Api(tags = "短信管理")
-@CrossOrigin
 @RequestMapping("/api/sms")
 public class ApiSmsController {
 

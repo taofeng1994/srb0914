@@ -9,7 +9,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="service-gateway" />
         <module name="service-base" />
+        <module name="hfb" />
         <module name="jwt" />
         <module name="guigu-common" />
         <module name="alibaba-easyexcel" />
@@ -23,10 +25,12 @@
       <module name="alibaba-easyexcel" target="1.8" />
       <module name="guigu-common" target="1.8" />
       <module name="haha" target="1.8" />
+      <module name="hfb" target="1.8" />
       <module name="jwt" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
       <module name="service-base" target="1.8" />
       <module name="service-core" target="1.8" />
+      <module name="service-gateway" target="1.8" />
       <module name="service-oss" target="1.8" />
       <module name="service-sms" target="1.8" />
       <module name="srb0914" target="1.8" />
@@ -39,6 +43,7 @@
       <module name="mybatis-plus" options="-parameters" />
       <module name="service-base" options="-parameters" />
       <module name="service-core" options="-parameters" />
+      <module name="service-gateway" options="-parameters" />
       <module name="service-oss" options="-parameters" />
       <module name="service-sms" options="-parameters" />
     </option>

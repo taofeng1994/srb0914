@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/core/userInfo")
 @Api(tags = "会员接口")
-@CrossOrigin
+
 public class UserInfoController {
 
     @Resource

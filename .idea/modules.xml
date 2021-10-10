@@ -4,10 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/alibaba-easyexcel/alibaba-easyexcel.iml" filepath="$PROJECT_DIR$/alibaba-easyexcel/alibaba-easyexcel.iml" />
       <module fileurl="file://$PROJECT_DIR$/guigu-common/guigu-common.iml" filepath="$PROJECT_DIR$/guigu-common/guigu-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hfb/hfb.iml" filepath="$PROJECT_DIR$/hfb/hfb.iml" />
       <module fileurl="file://$PROJECT_DIR$/jwt/jwt.iml" filepath="$PROJECT_DIR$/jwt/jwt.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" filepath="$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-base/service-base.iml" filepath="$PROJECT_DIR$/service-base/service-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-core/service-core.iml" filepath="$PROJECT_DIR$/service-core/service-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-gateway/service-gateway.iml" filepath="$PROJECT_DIR$/service-gateway/service-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-oss/service-oss.iml" filepath="$PROJECT_DIR$/service-oss/service-oss.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-sms/service-sms.iml" filepath="$PROJECT_DIR$/service-sms/service-sms.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/srb0914.iml" filepath="$PROJECT_DIR$/.idea/srb0914.iml" />

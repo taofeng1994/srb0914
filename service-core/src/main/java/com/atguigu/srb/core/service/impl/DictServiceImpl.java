@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,8 +72,28 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     }
 
 
+    /**
+     * 根据dictCode查询分类
+     * @param dictCode
+     * @return
+     */
+    @Override
+    public List<Dict> fidByDictCode(String dictCode) {
+        QueryWrapper<Dict> dictQueryWrapper = new QueryWrapper<Dict>().eq("dict_code", dictCode);
+        Dict dict = baseMapper.selectOne(dictQueryWrapper);
+        List<Dict> dictList = new ArrayList<>();
+        if (dict != null){
+            dictList = this.listByParentId(dict.getId());
+        }
 
+        return dictList;
+    }
 
+    /**
+     * 判断数据字典是否有子节点
+     * @param id
+     * @return
+     */
     private boolean hasChildren(Long id){
         Integer count = baseMapper.selectCount(new QueryWrapper<Dict>().eq("parent_id", id));
         if (count >0){

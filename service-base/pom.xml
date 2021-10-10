@@ -78,6 +78,7 @@
             <artifactId>joda-time</artifactId>
         </dependency>
 
+        <!--令牌-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
@@ -94,7 +95,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
 
         <!--服务容错,服务降价的依赖-->
         <dependency>

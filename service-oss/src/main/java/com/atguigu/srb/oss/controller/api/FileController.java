@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @RestController
-@CrossOrigin
+
 @Api(tags = "阿里云文件保存接口")
 @RequestMapping("/api/oss/file")
 public class FileController {

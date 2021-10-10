@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @Api(tags = "后台会员登录日志接口")
 @RequestMapping("/admin/core/userLoginRecord")
-@CrossOrigin
+
 public class AdminUserLoginRecordController {
 
     @Resource

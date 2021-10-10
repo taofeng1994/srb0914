@@ -1,7 +1,10 @@
 package com.atguigu.srb.core.service;
 
 import com.atguigu.srb.core.pojo.entity.UserBind;
+import com.atguigu.srb.core.pojo.vo.UserBindVO;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -12,5 +15,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-09-22
  */
 public interface UserBindService extends IService<UserBind> {
+
+    String commitBindUser(UserBindVO userBindVO, Long userId);
+
+    void hfbNotify(Map<String, Object> map);
+
+    boolean isBind(String agentUserId);
+
 
 }

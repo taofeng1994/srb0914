@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @Api(tags = "后台会员管理")
 @RestController
 @RequestMapping("/admin/core/userInfo")
-@CrossOrigin
+
 public class AdminUserInfoController {
 
     @Resource
