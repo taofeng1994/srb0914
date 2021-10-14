@@ -87,6 +87,10 @@ public class BorrowerServiceImpl extends ServiceImpl<BorrowerMapper, Borrower> i
         QueryWrapper<Borrower> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("status").eq("user_id",userId);
         Borrower borrower = baseMapper.selectOne(queryWrapper);
+        if (borrower == null) {
+            borrower = new Borrower();
+            borrower.setStatus(0);
+        }
         return borrower.getStatus();
 
     }
@@ -116,10 +120,13 @@ public class BorrowerServiceImpl extends ServiceImpl<BorrowerMapper, Borrower> i
         String industry = getNameByParentDictCodeAndValue("industry", borrower.getIndustry());
         String returnSource = getNameByParentDictCodeAndValue("returnSource", borrower.getReturnSource());
         String relation = getNameByParentDictCodeAndValue("relation", borrower.getContactsRelation());
+        String income = getNameByParentDictCodeAndValue("income", borrower.getIncome());
         borrowerDetailVO.setEducation(education);
         borrowerDetailVO.setIndustry(industry);
         borrowerDetailVO.setReturnSource(returnSource);
         borrowerDetailVO.setContactsRelation(relation);
+        borrowerDetailVO.setIncome(income);
+
         String status = BorrowerStatusEnum.getMsgByStatus(borrower.getStatus());
         borrowerDetailVO.setStatus(status);
         QueryWrapper<BorrowerAttach> queryWrapper = new QueryWrapper<>();
@@ -185,7 +192,7 @@ public class BorrowerServiceImpl extends ServiceImpl<BorrowerMapper, Borrower> i
 
     }
 
-
+    @Override
     public String getNameByParentDictCodeAndValue(String dictCode, Integer value){
         QueryWrapper<Dict> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dict_code",dictCode);

@@ -27,4 +27,6 @@ public interface BorrowerService extends IService<Borrower> {
     BorrowerDetailVO getBorrowerDetailVOById(Long id);
 
     void approval(BorrowerApprovalVO borrowerApprovalVO);
+
+    public String getNameByParentDictCodeAndValue(String dictCode, Integer value);
 }

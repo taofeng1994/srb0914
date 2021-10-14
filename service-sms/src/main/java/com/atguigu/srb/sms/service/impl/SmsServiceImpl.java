@@ -35,7 +35,7 @@ public class SmsServiceImpl implements SmsService {
     @Override
     public void send(String mobile) {
 
-        //创建阿里云的远程客户端对象需要的参数
+        /*//创建阿里云的远程客户端对象需要的参数
         DefaultProfile profile = DefaultProfile.getProfile(SmsProperties.REGION_Id,SmsProperties.KEY_ID,
                                                             SmsProperties.KEY_SECRET);
         //创建远程客户端对象
@@ -43,7 +43,8 @@ public class SmsServiceImpl implements SmsService {
 
         //创建远程连接的请求,并设置他的请求参数
         CommonRequest commonRequest = new CommonRequest();
-        commonRequest.setSysMethod(MethodType.POST);//发送POST请求
+        //发送POST请求
+        commonRequest.setSysMethod(MethodType.POST);
         commonRequest.setSysDomain("dysmsapi.aliyuncs.com");
         commonRequest.setSysVersion("2017-05-25");
         commonRequest.setSysAction("SendSms");
@@ -51,20 +52,21 @@ public class SmsServiceImpl implements SmsService {
         commonRequest.putQueryParameter("PhoneNumbers", mobile);
         commonRequest.putQueryParameter("SignName", "北京课时教育");
         commonRequest.putQueryParameter("TemplateCode", SmsProperties.TEMPLATE_CODE);
-
+*/
         //生成验证码，并将验证码通过远程客户端发送到阿里云短信
         String code = RandomUtils.getSixBitRandom();
-        Map<String, String> map = new HashMap<>();
-        map.put("code",code);
+        System.out.println(code);
+        /*Map<String, String> map = new HashMap<>();
+        map.put("code",code);*/
 
-        String json = JSON.toJSONString(map);
+        /*String json = JSON.toJSONString(map);
         commonRequest.putQueryParameter("TemplateParam",json);
 
         //使用客户端对像发送请求，并得到响应结果
         CommonResponse response = defaultAcsClient.getCommonResponse(commonRequest);
         //根据响应判断验证码是否发送成功；
         boolean b = response.getHttpResponse().isSuccess();
-        Assert.isTrue(b,ResponseEnum.ALIYUN_SMS_ERROR);
+        Assert.isTrue(b,ResponseEnum.ALIYUN_SMS_ERROR);*/
 
         //将验证码存入redis缓存
         redisTemplate.opsForValue().set("srb:sms:code" + mobile,code,120, TimeUnit.HOURS);

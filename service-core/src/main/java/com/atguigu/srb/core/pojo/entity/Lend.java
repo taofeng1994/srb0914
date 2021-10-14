@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import io.swagger.annotations.ApiModel;
@@ -113,6 +115,10 @@ public class Lend implements Serializable {
     @TableField("is_deleted")
     @TableLogic
     private Boolean deleted;
+
+    @ApiModelProperty(value = "其他参数")
+    @TableField(exist = false)
+    private Map<String,Object> param = new HashMap<>();
 
 
 }

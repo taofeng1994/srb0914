@@ -38,7 +38,7 @@ public class UserBindController {
     public R bind(@RequestBody UserBindVO userBindVO, HttpServletRequest request){
         //从token中拿到用户的信息
         String token = request.getHeader("token");
-        Long userId = 0l;
+        Long userId = 0L;
         userId = JwtUtils.getUserId(token);
 
         String formStr = userBindService.commitBindUser(userBindVO,userId);
@@ -74,7 +74,7 @@ public class UserBindController {
     @ApiOperation("获取用户是否绑定接口")
     public R getBind(HttpServletRequest request){
         String token = request.getHeader("token");
-        Long userId = 0l;
+        Long userId = 0L;
         userId = JwtUtils.getUserId(token);
         boolean bind = userBindService.isBind(userId+"");
         return R.ok().data("status",bind);

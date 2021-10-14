@@ -14,6 +14,7 @@ import com.atguigu.srb.core.pojo.vo.BorrowInfoApprovalVO;
 import com.atguigu.srb.core.pojo.vo.BorrowerDetailVO;
 import com.atguigu.srb.core.service.BorrowInfoService;
 import com.atguigu.srb.core.service.BorrowerService;
+import com.atguigu.srb.core.service.LendService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.aspectj.weaver.ast.Var;
@@ -46,10 +47,13 @@ public class BorrowInfoServiceImpl extends ServiceImpl<BorrowInfoMapper, BorrowI
     IntegralGradeMapper integralGradeMapper;
 
     @Resource
-    BorrowerServiceImpl borrowServiceImpl;
+    BorrowerService borrowService;
 
     @Resource
     BorrowerMapper borrowerMapper;
+
+    @Resource
+    LendService lendService;
 
     @Override
     public BigDecimal getBorrowAmount(Long userId) {
@@ -108,8 +112,8 @@ public class BorrowInfoServiceImpl extends ServiceImpl<BorrowInfoMapper, BorrowI
     public List<BorrowInfo> selectList() {
         List<BorrowInfo> borrowInfoList = baseMapper.selectBorrowInfoList();
         for (BorrowInfo borrowInfo : borrowInfoList) {
-            String returnMethod = borrowServiceImpl.getNameByParentDictCodeAndValue("returnMethod", borrowInfo.getReturnMethod());
-            String moneyUse = borrowServiceImpl.getNameByParentDictCodeAndValue("moneyUse", borrowInfo.getMoneyUse());
+            String returnMethod = borrowService.getNameByParentDictCodeAndValue("returnMethod", borrowInfo.getReturnMethod());
+            String moneyUse = borrowService.getNameByParentDictCodeAndValue("moneyUse", borrowInfo.getMoneyUse());
             String status = BorrowInfoStatusEnum.getMsgByStatus(borrowInfo.getStatus());
             borrowInfo.getParam().put("returnMethod", returnMethod);
             borrowInfo.getParam().put("moneyUse", moneyUse);
@@ -126,8 +130,8 @@ public class BorrowInfoServiceImpl extends ServiceImpl<BorrowInfoMapper, BorrowI
         BorrowInfo borrowInfo = baseMapper.selectById(id);
 
         //组装borrowerInfo的param
-        String returnMethod = borrowServiceImpl.getNameByParentDictCodeAndValue("returnMethod", borrowInfo.getReturnMethod());
-        String moneyUse = borrowServiceImpl.getNameByParentDictCodeAndValue("moneyUse", borrowInfo.getMoneyUse());
+        String returnMethod = borrowService.getNameByParentDictCodeAndValue("returnMethod", borrowInfo.getReturnMethod());
+        String moneyUse = borrowService.getNameByParentDictCodeAndValue("moneyUse", borrowInfo.getMoneyUse());
         String status = BorrowInfoStatusEnum.getMsgByStatus(borrowInfo.getStatus());
         borrowInfo.getParam().put("returnMethod", returnMethod);
         borrowInfo.getParam().put("moneyUse", moneyUse);
@@ -139,12 +143,8 @@ public class BorrowInfoServiceImpl extends ServiceImpl<BorrowInfoMapper, BorrowI
         Borrower borrower = borrowerMapper.selectOne(queryWrapper);
 
 
-
-
-
-
         //组装借款人对象
-        BorrowerDetailVO borrowerDetailVO = borrowServiceImpl.getBorrowerDetailVOById(borrower.getId());
+        BorrowerDetailVO borrowerDetailVO = borrowService.getBorrowerDetailVOById(borrower.getId());
 
         //组装数据
         Map<String, Object> result = new HashMap<>();
@@ -163,11 +163,10 @@ public class BorrowInfoServiceImpl extends ServiceImpl<BorrowInfoMapper, BorrowI
         borrowInfo.setStatus(borrowInfoApprovalVO.getStatus());
         baseMapper.updateById(borrowInfo);
 
-        //审核通过则创建标的
+        //审核通过创建标的
 
         if (borrowInfoApprovalVO.getStatus().intValue() == BorrowInfoStatusEnum.CHECK_OK.getStatus().intValue()) {
-            //创建标的
-            //TODO
+            lendService.createLend(borrowInfoApprovalVO,borrowInfo);
         }
     }
 
