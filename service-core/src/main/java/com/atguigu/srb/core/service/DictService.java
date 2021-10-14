@@ -26,4 +26,7 @@ public interface DictService extends IService<Dict> {
     List<Dict> listByParentId(Long parentId);
 
     List<Dict> fidByDictCode(String dictCode);
+
+
+
 }

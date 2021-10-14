@@ -6,6 +6,7 @@ import com.atguigu.srb.common.result.R;
 import com.atguigu.srb.core.hfb.RequestHelper;
 import com.atguigu.srb.core.pojo.vo.UserBindVO;
 import com.atguigu.srb.core.service.UserBindService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.StringUtils;
