@@ -51,6 +51,7 @@ public class UserAccountController {
         return R.ok().data("formStr",formStr);
     }
 
+
     @PostMapping("/notify")
     @ApiOperation("账户充值异步回调")
     public String hfbNotify(HttpServletRequest request){
@@ -66,7 +67,7 @@ public class UserAccountController {
             return userAccountService.hfbNotify(map);
         } else {
             log.info("用户充值异步回调充值失败：" + JSON.toJSONString(map));
-            return "success";
+            return "false";
         }
     }
 
